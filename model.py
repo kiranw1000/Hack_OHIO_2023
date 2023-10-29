@@ -12,3 +12,5 @@ def predict(images):
 
 def show_image(images,image):
     plt.imshow(images[image])
+
+print("Hello")

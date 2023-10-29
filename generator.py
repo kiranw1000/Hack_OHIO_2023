@@ -23,6 +23,12 @@ def draw_triangle(x1, y1, x2, y2, x3, y3, color):
     draw.polygon(((x1, y1), (x2, y2), (x3, y3)), fill=color)
     draw.polygon(((x1, y1), (x2, y2), (x3, y3)), outline=(0, 0, 0, 0), width=0)
     image.save("Images/output.jpg")
+    
+def draw_arc(x1, y1, x2, y2, color):
+    image = Image.open("Images/output.jpg")
+    draw = ImageDraw.Draw(image, "RGBA")
+    draw.arc(((x1, y1), (x2, y2)), fill=color, width = 10, start=180, end=360)
+    image.save("Images/output.jpg")
 
 calc_pct = lambda pred: (pred/(480*640))/ds_range
 
@@ -46,13 +52,15 @@ def run():
 
     # Creates map with space for the strand
     # west
-    draw_rect(396, 538, 407, 753, get_color())
+    draw_rect(396, 525, 407, 753, get_color())
     # east
-    draw_rect(493, 538, 504, 753, get_color())
+    draw_rect(493, 525, 504, 753, get_color())
     # north
     draw_rect(445, 314, 456, 486, get_color())
 
-    # Creates map with space for the central park bottom
+    # central park north circle
+    draw_arc(398,487,502,562,get_color())
+    # Creates central park south
     draw_rect(408, 564, 492, 575,get_color())
 
     # Creates map with space for regent street
